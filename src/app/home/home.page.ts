@@ -9,7 +9,9 @@ import { map } from 'rxjs/operators';
 })
 export class HomePage {
 
-  name: string;
+  name:string;
+  serverResponse  : pData;
+  nameFromServer: string;
   constructor(private http:HttpClient) {
 
   }
@@ -20,11 +22,13 @@ export class HomePage {
     
     this.http.post <pData> ('http://localhost:8080/posts',data).subscribe(response => {
         console.log("POST RESPONSE",response)
+        this.nameFromServer = response.name;
+        console.log(this.serverResponse,"hello from server")
       })
   }
 
 }
 
 export interface pData{
-  hello:string
+  name:string
 }
