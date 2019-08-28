@@ -10,11 +10,11 @@ app.use(bodyParser.json());
 app.use(methodOverride());
 app.use(cors());
 
-app.get('/posts', function(req, res) {
+app.post('/posts', function(req, res) {
 
-    console.log("posts!");
+    console.log("posts!",req.body);
 
-    res.status(200).send({hello:"yoo"})
+    res.status(200).send({hello:req.body})
 });
 
 app.listen(process.env.PORT || 8080)
