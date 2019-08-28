@@ -14,7 +14,7 @@ app.post('/posts', function(req, res) {
 
     console.log("posts!",req.body);
 
-    res.status(200).send({hello:req.body})
+    res.status(200).send({name:req.body.name})
 });
 
 app.listen(process.env.PORT || 8080)
