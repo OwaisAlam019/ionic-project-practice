@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
+import {Router} from '@angular/router'
 import { map } from 'rxjs/operators';
 import { ToastController } from '@ionic/angular';
 
@@ -13,11 +14,12 @@ export class HomePage {
   name:string;
   // serverResponse  : pData;
   nameFromServer: string;
-  constructor(private http:HttpClient,private toastController:ToastController) {
+  constructor(private http:HttpClient,
+    private toastController:ToastController,
+    private router:Router) {
 
   }
 
-  
   async presentToast() {
     const toast = await this.toastController.create({
       message:"form submitted successfully.!!",
@@ -32,6 +34,7 @@ export class HomePage {
         console.log( "POST RESPONSE" , response);
         form.reset();
         this.presentToast();
+        this.router.navigateByUrl('login');
         // this.nameFromServer = response.name;
         // console.log(this.serverResponse,"hello from server")
       });
